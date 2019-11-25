@@ -11,17 +11,13 @@ namespace Devies.ActiveMQ.AMQP
 {
     public abstract class BaseQueueTask<T> : BackgroundService, IDisposable
     {
-        private readonly ILogger<BaseQueueTask<T>> logger;
         private readonly IServiceProvider serviceProvider;
         private IQueueReadService<T> currentQueueReader;
         private int fails = 0;
 
 
-        protected BaseQueueTask(
-            ILogger<BaseQueueTask<T>> logger,
-            IServiceProvider serviceProvider)
+        protected BaseQueueTask(IServiceProvider serviceProvider)
         {
-            this.logger = logger;
             this.serviceProvider = serviceProvider;
         }
 
